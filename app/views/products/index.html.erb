@@ -1,0 +1,11 @@
+<h1>商品一覧</h1>
+<hr>
+<% @products.each do |product| %>
+
+  <%= link_to product_path(product) do %>
+    <%= image_tag "#{product.image_path}"  %> <br>
+    <h2><%= product.name %></h2>
+  <% end %>
+  <hr>
+
+<% end %>

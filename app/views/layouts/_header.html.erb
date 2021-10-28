@@ -1,3 +1,15 @@
-<div style="background-color: #f2f2f2">
+<%
+  if user_signed_in?
+    @login_state = "ログインしています"
+  else
+    @login_state = "ログインしていません"
+  end
+
+%>
+
+
+<div style="background-color: #f2f2f2; padding-top: 20px">
   <%= link_to 'ログイン', new_user_session_path %>
+  <%= link_to 'サインアウト', destroy_user_session_path, method: :delete %>
+  <p>ログイン状態: <%= @login_state %></p>
 </div>

@@ -1,0 +1,15 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8
+  pool: 5
+  username: root
+  password: password
+  host: db
+
+development:
+  <<: *default
+  database: devise-2_development
+
+test:
+  <<: *default
+  database: devise-2_test

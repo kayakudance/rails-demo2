@@ -75,7 +75,9 @@ Rails.application.configure do
   # config.action_cable.disable_request_forgery_protection = true
 
   # メール送信設定
-  config.action_mailer.default_url_options = { host: 'smtp', port: 1025 }
+  ## メールの送り元の設定？
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  ##　メールの送り先の設定？
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: "smtp",

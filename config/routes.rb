@@ -9,4 +9,13 @@ Rails.application.routes.draw do
   }
 
   resources :products, only:[:index, :show]
+
+  scope :aftermails do
+    get 'aftersignupmail', to:'aftermails#signup'
+    get 'aftersignin', to:'aftermails#signin'
+  end
+
+  scope :cart do
+
+  end
 end

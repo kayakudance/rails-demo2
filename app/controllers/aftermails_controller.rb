@@ -3,8 +3,8 @@ class AftermailsController < ApplicationController
   end
 
   def signin
-    unless current_user.cart
-      current_user.create_cart
-    end
+    # unless current_user.cart
+    #   current_user.create_cart
+    # end
   end
 end

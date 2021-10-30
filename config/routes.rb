@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'test', to: 'tests#index', as: 'test'
+
   root 'home#index'
   devise_for :users, controllers: {
     registrations: 'users/registrations',
@@ -15,5 +17,8 @@ Rails.application.routes.draw do
     get 'aftersignin', to:'aftermails#signin'
   end
 
+  get 'cart', to: 'carts#index'
+  patch 'cart', to: 'carts#update', as: 'update_cart_item_quantity'
+  delete 'cart', to: 'carts#destroy', as: 'destroy_cart_item'
   post 'cart/added', to: 'carts#add_items'
 end

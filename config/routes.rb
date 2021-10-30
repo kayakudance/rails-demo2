@@ -15,7 +15,5 @@ Rails.application.routes.draw do
     get 'aftersignin', to:'aftermails#signin'
   end
 
-  scope :cart do
-
-  end
+  post 'cart/added', to: 'carts#add_items'
 end

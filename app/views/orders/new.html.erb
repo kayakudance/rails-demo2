@@ -1,0 +1,24 @@
+<h1>注文設定</h1>
+<hr>
+<%= form_with model: @user_order do |f| %>
+  <%= f.label :zip, '郵便番号' %>
+  <%= f.number_field :zip %>
+  <br>
+  <br>
+  <%= f.label :address, '住所' %>
+  <%= f.text_field :address, style: 'width:300px' %>
+  <br>
+  <br>
+  <%= f.label :tel, '電話番号' %>
+  <%= f.number_field :tel %>
+  <hr>
+  <h2>支払い方法</h2>
+  <%= f.select :paymethod, ['代引','銀行振込','クレジット'] %>
+  <hr>
+  <h2>ご請求金額</h2>
+  <h3><%= @bill %>円</h3>
+  <%= f.hidden_field :bill, value: @bill %>
+  <%= f.submit '注文確定' %>
+
+<% end %>
+

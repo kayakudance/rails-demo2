@@ -1,0 +1,19 @@
+<%
+  if user_signed_in?
+    @auth_state = "ログインしています"
+  else
+    @auth_state = "ログインしていません"
+  end
+
+
+%>
+<div style="background-color: #f2f2f2; padding-top: 30px">
+  <%= link_to 'ログイン', new_user_session_path %>
+  <%= link_to 'ログアウト', destroy_user_session_path, method: :delete %>
+  <p>ログイン状態: <%= @auth_state %></p>
+  <%= link_to '商品一覧へ', products_path %>
+
+  <% if current_user %>
+    <%= link_to 'カート', cart_path %>
+  <% end %>
+</div>

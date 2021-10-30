@@ -1,0 +1,12 @@
+<h1><%= @product.name %></h1>
+<%= image_tag "#{@product.image_path}" %> <br>
+<h2>商品説明</h2>
+<p><%= @product.description %></p>
+<h2>価格</h2>
+<h3><%= @product.price %>円</h3>
+<hr>
+<%= form_with url: cart_added_path, local: true do |f| %>
+  <%= f.hidden_field :id, value: @product.id %>
+  <%= f.select :quantity,[*1..10] %>
+  <%= f.submit 'カートにいれる' %>
+<% end %>

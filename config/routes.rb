@@ -30,6 +30,7 @@ Rails.application.routes.draw do
     get 'order'
   end
 
-
+  # 注文履歴
+  resources :histories, only: [:index, :show]
 
 end

@@ -1,0 +1,11 @@
+<h1>注文履歴</h1>
+<hr>
+<% @user_orders.each do |order| %>
+  <h4>注文日: <%= order.created_at %></h4>
+  <h4>注文合計: <%= order.bill %></h4>
+  <h4>お届け先: <%= order.address %></h4>
+  <h4>注文状況: <%= order.order_status %></h4>
+  <h4>注文日: <%= order.created_at %></h4>
+  <%= link_to '注文詳細へ', history_path(order)%>
+  <hr>
+<% end %>

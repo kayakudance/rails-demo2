@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_29_004108) do
+ActiveRecord::Schema.define(version: 2021_10_31_045541) do
 
   create_table "cart_items", charset: "utf8", force: :cascade do |t|
     t.bigint "product_id", null: false
@@ -27,6 +27,31 @@ ActiveRecord::Schema.define(version: 2021_10_29_004108) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_carts_on_user_id"
+  end
+
+  create_table "order_items", charset: "utf8", force: :cascade do |t|
+    t.bigint "order_id", null: false
+    t.integer "product_id"
+    t.string "product_name"
+    t.integer "quantity"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "ordered_price"
+    t.index ["order_id"], name: "index_order_items_on_order_id"
+  end
+
+  create_table "orders", charset: "utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "address"
+    t.string "paymethod"
+    t.integer "bill"
+    t.string "order_status", default: "支払い確認中", null: false
+    t.datetime "order_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "zip"
+    t.string "tel"
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "products", charset: "utf8", force: :cascade do |t|
@@ -57,4 +82,6 @@ ActiveRecord::Schema.define(version: 2021_10_29_004108) do
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
   add_foreign_key "carts", "users"
+  add_foreign_key "order_items", "orders"
+  add_foreign_key "orders", "users"
 end

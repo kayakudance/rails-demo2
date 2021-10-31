@@ -1,0 +1,15 @@
+<h1>注文詳細</h1>
+<hr>
+<h4>注文日: <%= @user_order.created_at %></h4>
+<h4>注文合計: <%= @user_order.bill %></h4>
+<h4>お届け先: <%= @user_order.address %></h4>
+<h4>注文状況: <%= @user_order.order_status %></h4>
+<h4>注文日: <%= @user_order.created_at %></h4>
+<hr>
+<% @user_order.order_items.each do |order_item| %>
+  <h3>商品名: <%= order_item.product_name %></h3>
+  <h3>注文単価: <%= order_item.ordered_price %>円</h3>
+  <h3>注文個数: <%= order_item.quantity %>個</h3>
+  <h3>小計: <%= order_item.calculate_total %>円</h3>
+  <hr>
+<% end %>

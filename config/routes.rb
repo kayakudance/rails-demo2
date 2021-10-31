@@ -21,4 +21,16 @@ Rails.application.routes.draw do
   patch 'cart', to: 'carts#update', as: 'update_cart_item_quantity'
   delete 'cart', to: 'carts#destroy', as: 'destroy_cart_item'
   post 'cart/added', to: 'carts#add_items'
+
+  #  レジ
+  resources :orders, only: [:new, :create]
+
+  #　complete
+  namespace :completes do
+    get 'order'
+  end
+
+  # 注文履歴
+  resources :histories, only: [:index, :show]
+
 end

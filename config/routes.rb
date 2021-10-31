@@ -25,4 +25,11 @@ Rails.application.routes.draw do
   #  レジ
   resources :orders, only: [:new, :create]
 
+  #　complete
+  namespace :completes do
+    get 'order'
+  end
+
+
+
 end

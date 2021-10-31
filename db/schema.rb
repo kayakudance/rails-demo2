@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_30_112020) do
+ActiveRecord::Schema.define(version: 2021_10_31_045541) do
 
   create_table "cart_items", charset: "utf8", force: :cascade do |t|
     t.bigint "product_id", null: false
@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2021_10_30_112020) do
     t.integer "quantity"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "ordered_price"
     t.index ["order_id"], name: "index_order_items_on_order_id"
   end
 
@@ -48,8 +49,8 @@ ActiveRecord::Schema.define(version: 2021_10_30_112020) do
     t.datetime "order_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "zip"
-    t.integer "tel"
+    t.string "zip"
+    t.string "tel"
     t.index ["user_id"], name: "index_orders_on_user_id"
   end
 

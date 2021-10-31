@@ -1,8 +1,8 @@
 <h1>注文設定</h1>
 <hr>
-<%= form_with model: @user_order do |f| %>
+<%= form_with model: @order, local: true do |f| %>
   <%= f.label :zip, '郵便番号' %>
-  <%= f.number_field :zip %>
+  <%= f.text_field :zip %>
   <br>
   <br>
   <%= f.label :address, '住所' %>
@@ -10,7 +10,7 @@
   <br>
   <br>
   <%= f.label :tel, '電話番号' %>
-  <%= f.number_field :tel %>
+  <%= f.text_field :tel %>
   <hr>
   <h2>支払い方法</h2>
   <%= f.select :paymethod, ['代引','銀行振込','クレジット'] %>
@@ -18,7 +18,7 @@
   <h2>ご請求金額</h2>
   <h3><%= @bill %>円</h3>
   <%= f.hidden_field :bill, value: @bill %>
+
   <%= f.submit '注文確定' %>
 
 <% end %>
-

@@ -1,7 +1,11 @@
 <h2>新規登録</h2>
 
-  <%= form_with model: User.new, url: '/users', local:true do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<%= form_with model: Admin.new, url: '/admins', local:true do |f| %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name, autofocus: true %>
+  </div>
 
   <div class="field">
     <%= f.label :email, 'メールアドレス'%><br/>
@@ -9,10 +13,7 @@
   </div>
 
   <div class="field">
-    <%= f.label :password, 'パスワード' %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    <%= f.label :password, 'パスワード' %> <br>
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
@@ -26,4 +27,4 @@
   </div>
 <% end %>
 
-<%= link_to 'ログイン', new_user_session_path %>
+<%= link_to 'ログイン', new_admin_session_path %>

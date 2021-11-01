@@ -1,5 +1,18 @@
 Rails.application.routes.draw do
-  get 'test', to: 'tests#index', as: 'test'
+  devise_for :admins, controllers: {
+    registrations: 'admins/auth/registrations',
+    sessions: 'admins/auth/sessions',
+    passwords: 'admins/auth/passwords',
+    confirmations: 'admins/auth/confirmations',
+    unlocks: 'admins/auth/unlocks'
+  }
+
+  namespace :admins do
+    root 'admin#index'
+
+    resources :manage_products
+    resources :manage_orders, only:[:index, :edit, :update]
+  end
 
   root 'home#index'
   devise_for :users, controllers: {

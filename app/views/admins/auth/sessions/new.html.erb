@@ -1,0 +1,19 @@
+<h2>ログイン</h2>
+
+<%= form_with model: Admin.new, url: '/admins/sign_in', local:true do |f| %>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :password %><br />
+    <%= f.password_field :password, autocomplete: "current-password" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Log in" %>
+  </div>
+<% end %>
+
+<%= link_to '管理者 新規登録', new_admin_registration_path %>

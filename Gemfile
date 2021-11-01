@@ -60,3 +60,6 @@ gem 'devise', '~>4.2'
 
 gem 'debase'
 gem 'ruby-debug-ide'
+
+#ER自動生成
+gem 'rails-erd'

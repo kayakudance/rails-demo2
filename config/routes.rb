@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :admins do
-    get 'admin/index'
-  end
   devise_for :admins, controllers: {
     registrations: 'admins/auth/registrations',
     sessions: 'admins/auth/sessions',
@@ -12,6 +9,9 @@ Rails.application.routes.draw do
 
   namespace :admins do
     root 'admin#index'
+
+    resources :manage_products
+    resources :manage_orders, only:[:index, :edit, :update]
   end
 
   root 'home#index'

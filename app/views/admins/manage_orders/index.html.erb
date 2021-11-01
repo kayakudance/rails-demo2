@@ -1,0 +1,12 @@
+<h1>注文管理</h1>
+<hr>
+<h2>注文一覧</h2>
+<% @orders.each do |order| %>
+  <h4 style="display: inline">
+    <%=
+      link_to "#{order.order_status} #{order.user.name}",
+                edit_admins_manage_order_path(order)
+    %>
+  </h4>
+  <hr>
+<% end %>

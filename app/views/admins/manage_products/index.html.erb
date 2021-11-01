@@ -1,0 +1,10 @@
+<h1>商品管理</h1>
+<hr>
+<h2><%= link_to '+ 商品登録', new_admins_manage_product_path %></h2>
+<hr>
+<h2>登録済み商品</h2>
+<% @products.each do |product| %>
+  <h4 style="display: inline"><%= link_to "#{product.name}", edit_admins_manage_product_path(product) %></h4>
+  <%= button_to '削除', "manage_products/#{product.id}", { method: :delete} %>
+  <hr>
+<% end %>

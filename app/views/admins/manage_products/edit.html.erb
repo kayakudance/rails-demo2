@@ -1,0 +1,18 @@
+<h1>商品編集</h1>
+<hr>
+<%= form_with model: @product, url: admins_manage_product_path ,method: :put do |f| %>
+  <%= @product.id %>
+  <h2>商品名</h2>
+  <h2><%= f.text_field :name %></h2>
+  <hr>
+  <h2>商品概要</h2>
+  <p><%= f.text_area :description %></p>
+  <hr>
+  <h2>商品価格</h2>
+  <%= f.number_field :price %> 円
+  <hr>
+  <h2>商品画像</h2>
+  ※順次実装
+  <hr>
+  <%= f.submit '更新' %>
+<% end %>

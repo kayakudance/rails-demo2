@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_31_104733) do
+ActiveRecord::Schema.define(version: 2021_11_01_085204) do
 
   create_table "admins", charset: "utf8", force: :cascade do |t|
     t.string "name"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 2021_10_31_104733) do
     t.string "address"
     t.string "paymethod"
     t.integer "bill"
-    t.string "order_status", default: "支払い確認中", null: false
+    t.string "order_status", default: "注文受付", null: false
     t.datetime "order_date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -88,6 +88,7 @@ ActiveRecord::Schema.define(version: 2021_10_31_104733) do
     t.string "unconfirmed_email"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

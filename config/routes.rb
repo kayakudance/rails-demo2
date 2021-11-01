@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :admins do
+    get 'admin/index'
+  end
   devise_for :admins, controllers: {
     registrations: 'admins/auth/registrations',
     sessions: 'admins/auth/sessions',
@@ -6,6 +9,10 @@ Rails.application.routes.draw do
     confirmations: 'admins/auth/confirmations',
     unlocks: 'admins/auth/unlocks'
   }
+
+  namespace :admins do
+    root 'admin#index'
+  end
 
   root 'home#index'
   devise_for :users, controllers: {

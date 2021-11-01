@@ -9,12 +9,12 @@ Rails.application.routes.draw do
 
   namespace :admins do
     root 'admin#index'
-
     resources :manage_products
     resources :manage_orders, only:[:index, :edit, :update]
   end
 
   root 'home#index'
+
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',

@@ -12,7 +12,6 @@ class Admins::ManageOrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order.update(order_params)
     redirect_to admins_manage_orders_path
-
   end
 
   private

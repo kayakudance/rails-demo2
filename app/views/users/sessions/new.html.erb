@@ -1,6 +1,11 @@
 <h2>ログイン</h2>
 
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
+
 <%= form_with model: User.new, url: '/users/sign_in', local:true do |f| %>
+
+
   <div class="field">
     <%= f.label :email, 'メールアドレス' %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

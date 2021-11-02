@@ -1,4 +1,5 @@
 class HistoriesController < ApplicationController
+  before_action :authenticate_user!
   def index
     @user_orders = current_user.orders
   end

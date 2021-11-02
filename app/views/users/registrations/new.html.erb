@@ -1,27 +1,42 @@
 <h2>新規登録</h2>
 
   <%= form_with model: User.new, url: '/users', local:true do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-
   <div class="field">
-    <%= f.label :name, '名前'%><br />
+    <%= f.label :name, 'ユーザーネーム'%><br>
     <%= f.text_field :name, autofocus: true %>
   </div>
+
+  <% if resource.errors.messages[:name].present? %>
+    <strong>※ <%= resource.errors.full_messages_for(:name).first %></strong>
+  <% end %>
 
   <div class="field">
     <%= f.label :email, 'メールアドレス'%><br/>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
+  <% if resource.errors.messages[:email].present? %>
+    <strong>※ <%= resource.errors.full_messages_for(:email).first %></strong>
+  <% end %>
+
   <div class="field">
     <%= f.label :password, 'パスワード' %> <br>
     <%= f.password_field :password, autocomplete: "new-password" %>
   </div>
 
+  <% if resource.errors.messages[:password].present? %>
+    <strong>※ <%= resource.errors.full_messages_for(:password).first %></strong>
+  <% end %>
+
   <div class="field">
-    <%= f.label :password_confirmation, 'パスワード確認用' %><br />
+    <%= f.label :password_confirmation, 'パスワード(確認用)' %><br />
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
+
+  <% if resource.errors.messages[:password_confirmation].present? %>
+    <strong>※ <%= resource.errors.full_messages_for(:password_confirmation).first %></strong>
+  <% end %>
+
   <br>
   <div class="actions">
     <%= f.submit "登録する" %>

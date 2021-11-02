@@ -65,9 +65,5 @@ gem 'ruby-debug-ide'
 #ER自動生成
 gem 'rails-erd'
 
-# bootstrap
-gem 'bootstrap'
-gem 'jquery-rails'
-
 # 環境変数
 gem 'dotenv-rails'

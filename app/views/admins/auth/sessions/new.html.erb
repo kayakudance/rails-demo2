@@ -1,19 +1,40 @@
-<h2>ログイン</h2>
+
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
 
 <%= form_with model: Admin.new, url: '/admins/sign_in', local:true do |f| %>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email, 'メールアドレス' %><br/>
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label :password, 'パスワード' %><br />
     <%= f.password_field :password, autocomplete: "current-password" %>
   </div>
-
+  <br>
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "ログイン" %>
   </div>
 <% end %>
 
 <%= link_to '管理者 新規登録', new_admin_registration_path %>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-5">
+      <h3>管理画面ログイン</h3>
+
+      <p class="notice"><%= notice %></p>
+      <p class="alert"><%= alert %></p>
+
+      <div class="form-group">
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+

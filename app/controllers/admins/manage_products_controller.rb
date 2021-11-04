@@ -9,8 +9,13 @@ class Admins::ManageProductsController < ApplicationController
   end
 
   def create
-    Product.create(product_params)
-    redirect_to admins_manage_products_path
+    @product = Product.new(product_params)
+    if @product.save
+      flash[:success] = "商品を１件登録しました。"
+      redirect_to admins_manage_products_path
+    else
+      render action: :new
+    end
   end
 
   def edit
@@ -18,20 +23,21 @@ class Admins::ManageProductsController < ApplicationController
   end
 
   def update
-    @product = Product.find_by(params[:id])
+    @product = Product.find(params[:id])
     @product.update(product_params)
+    flash[:success] = "商品を更新しました。"
     redirect_to admins_manage_products_path
   end
 
   def destroy
-    product = Product.find_by(params[:id])
+    product = Product.find(params[:id])
     product.destroy
-
+    flash[:success] = "商品を１件削除しました。"
     redirect_to admins_manage_products_path
   end
 
   private
   def product_params
-    params.require(:product).permit(:name, :description, :price)
+    params.require(:product).permit(:name, :description, :price, :image)
   end
 end

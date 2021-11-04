@@ -1,11 +1,32 @@
-<h1>商品一覧</h1>
-<hr>
-<% @products.each do |product| %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-9">
+      <h1>商品一覧</h1>
+      <hr>
+      <div class="row g-5">
+        <% @products.each do |product| %>
+        <div class="col-3">
+          <%= link_to product_path(product) do %>
 
-  <%= link_to product_path(product) do %>
-    <%= image_tag "#{product.image_path}"  %> <br>
-    <h2><%= product.name %></h2>
-  <% end %>
-  <hr>
+            <% if product.image.attached? %>
+              <%= image_tag product.image, class: "img-fluid w-100 mb-3 ps-0"%>
+            <% end %>
+          <% end %>
+            <div class="row">
+              <div class="col-12">
+                <p class="mt-2"><%= product.name %></p>
+                <p class="mt-2">￥<%= product.price %></p>
+              </div>
+            </div>
+        </div>
+        <% end %>
 
-<% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-grid gap-2 col-sm-4 mx-auto mt-3">
+      <%= link_to '商品一覧へ', products_path, class: 'btn btn-lg btn-success' %>
+    </div>
+
+  </div>

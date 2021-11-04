@@ -1,12 +1,25 @@
-<h1><%= @product.name %></h1>
-<%= image_tag "#{@product.image_path}" %> <br>
-<h2>商品説明</h2>
-<p><%= @product.description %></p>
-<h2>価格</h2>
-<h3><%= @product.price %>円</h3>
-<hr>
-<%= form_with url: cart_added_path, local: true do |f| %>
-  <%= f.hidden_field :id, value: @product.id %>
-  <%= f.select :quantity,[*1..10] %>
-  <%= f.submit 'カートにいれる' %>
-<% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-6">
+      <div class="w-100">
+        <%= image_tag @product.image, class: "w-75"%>
+      </div>
+    </div>
+    <div class="col-6">
+      <h1><%= @product.name %></h1>
+      <hr>
+      <h4>商品説明</h4>
+      <p><%= @product.description %></p>
+      <hr>
+      <h3><span class="h5">価格 :</span>   ¥<%= @product.price %></h3>
+      <hr>
+      <%= form_with url: cart_added_path, local: true do |f| %>
+        <%= f.hidden_field :id, value: @product.id %>
+        <span>個数:</span> <%= f.select :quantity,[*1..10], {},{class: "form-select w-25 d-inline"} %>
+
+        <%= f.submit 'カートにいれる', class: "btn btn-warning d-block mt-3" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>

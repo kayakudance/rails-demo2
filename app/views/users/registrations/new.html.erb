@@ -7,7 +7,7 @@
   </div>
 
   <% if resource.errors.messages[:name].present? %>
-    <strong>※ <%= resource.errors.full_messages_for(:name).first %></strong>
+    <strong class="validation-error">※ <%= resource.errors.full_messages_for(:name).first %></strong>
   <% end %>
 
   <div class="field">
@@ -16,7 +16,7 @@
   </div>
 
   <% if resource.errors.messages[:email].present? %>
-    <strong>※ <%= resource.errors.full_messages_for(:email).first %></strong>
+    <strong class="validation-error">※ <%= resource.errors.full_messages_for(:email).first %></strong>
   <% end %>
 
   <div class="field">

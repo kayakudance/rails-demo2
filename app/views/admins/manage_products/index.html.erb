@@ -1,10 +1,26 @@
 <h1>商品管理</h1>
-<hr>
-<h2><%= link_to '+ 商品登録', new_admins_manage_product_path %></h2>
-<hr>
-<h2>登録済み商品</h2>
-<% @products.each do |product| %>
-  <h4 style="display: inline"><%= link_to "#{product.name}", edit_admins_manage_product_path(product) %></h4>
-  <%= button_to '削除', "manage_products/#{product.id}", { method: :delete} %>
-  <hr>
-<% end %>
+<h2><%= link_to '+ 商品登録', new_admins_manage_product_path, class: 'btn btn-success ' %></h2>
+
+<div class="table-responsive">
+  <table class="table w-auto">
+    <thead class="table-light text-center">
+    <tr>
+      <th scope="col">id</th>
+      <th scope="col">編集</th>
+      <th scope="col">削除</th>
+      <th scope="col">商品名</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @products.each do |product| %>
+    <tr>
+      <th scope="row"><%= product.id %></th>
+      <td><%= link_to '編集', edit_admins_manage_product_path(product), class: "btn btn-primary"%></td>
+      <td><%= link_to '削除', admins_manage_product_path(product), class: "btn btn-danger", method: :delete %></td>
+      <td><%= product.name %></td>
+    </tr>
+    <% end %>
+
+    </tbody>
+  </table>
+</div>

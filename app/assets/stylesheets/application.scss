@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+a,
+a:link,
+a:visited{
+    text-decoration: none;
+}
+
+td,th {
+    width: auto;
+}
+
+.validation-error {
+    color: red;
+}

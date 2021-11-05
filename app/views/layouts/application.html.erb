@@ -15,6 +15,13 @@
   <body>
     <%= render partial: 'layouts/dev_header' %>
     <%= render partial: 'layouts/header' %>
+
+    <% if flash[:success].present? %>
+    <div class="alert alert-info text-center" role="alert">
+      <%= flash[:success] %>
+    </div>
+  <% end %>
+
     <main class="my-5">
       <%= yield %>
     </main>

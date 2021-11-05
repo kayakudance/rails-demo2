@@ -8,9 +8,8 @@ class CartsController < ApplicationController
   end
 
   def update
-    this_cart_item = @user_cart.cart_items.find_by(product_id: params[:product_id])
-    this_cart_item.quantity = params[:modified_quantity].to_i
-    this_cart_item.save
+    this_cart_item = @user_cart.cart_items.find_by(product_id: params[:cart_item][:product_id])
+    this_cart_item.update!(cart_item_params)
     redirect_to cart_path
   end
 
@@ -20,12 +19,14 @@ class CartsController < ApplicationController
   end
 
   def add_items
+    @product = Product.find(params[:id])
     if @this_cart_item.blank?
       @user_cart.cart_items.create(product_id: params[:id], quantity: params[:quantity].to_i)
     else
       @this_cart_item.quantity += params[:quantity].to_i
       @this_cart_item.save
     end
+
   end
 
   private
@@ -38,5 +39,9 @@ class CartsController < ApplicationController
 
   def setup_this_cart_item!
     @this_cart_item = @user_cart.cart_items.find_by(product_id: params[:id])
+  end
+
+  def cart_item_params
+    params.require(:cart_item).permit(:quantity)
   end
 end

@@ -1,25 +1,53 @@
-<h1>カートの中身</h1>
-<hr>
-<h2>カートの金額合計: <%= current_user.cart.calculate_total_price %>円</h2>
-<% @cart_items.each do |cart_item| %>
 
-    <%= link_to product_path(cart_item.product) do %>
-    <h2><%= cart_item.product.name %></h2>
-    <% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <h1>カートの中身</h1>
+    <hr>
+    <div class="col-md-9">
+      <% @cart_items.each do |cart_item| %>
+        <div class="row border p-3 mb-3 me-3">
 
-    <h3>個数: <%= cart_item.quantity %></h3>
+          <div class="col-4">
+            <%= image_tag cart_item.product.image, class: "w-75" %>
+          </div>
 
-    <%= form_with url: update_cart_item_quantity_path, method: :patch, local: true do |f| %>
-      <%= f.hidden_field :product_id, value: cart_item.product.id %>
-      <%= f.select :modified_quantity,[*1..10] %>
-      <h3>商品単価: <%= cart_item.product.price %>円</h3>
-      <h3>商品合計: <%= cart_item.calculate_price %>円</h3>
-      <%= f.submit '個数の変更' %>
-    <% end %>
+          <div class="col-8">
+            <div class="d-flex flex-column h-100">
+              <%= link_to product_path(cart_item.product) do %>
+                <h4><%= cart_item.product.name %></h4>
+              <% end %>
 
-    <%= link_to 'カートから商品を削除', destroy_cart_item_path(cart_item: cart_item), method: :delete %>
-  <hr>
-<%= link_to 'レジへ進む', new_order_path %>
-<% end %>
+              <div class="mb-auto">¥<%= cart_item.product.price %></div>
+
+              <div>
+                <%= form_with model: cart_item,url: update_cart_item_quantity_path, method: :patch, local: true do |f| %>
+                  <%= f.hidden_field :product_id, value: cart_item.product.id %>
+                  <span>個数:</span> <%= f.select :quantity,[*1..10], {},{class: "form-select w-25 d-inline"} %>
+                  <%= f.submit '個数の変更', class: "btn btn-outline-secondary ms-1" %>
+                <% end %>
+              </div>
+
+              <div class="mt-1">
+                <%= link_to ' 削除', destroy_cart_item_path(cart_item: cart_item), class: "btn btn-danger", method: :delete %>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+
+    <div class="col-md-3">
+      <div class="border p-3 bg-light">
+        <h4>商品合計</h4>
+        <h4>¥<%= current_user.cart.calculate_total_price %></h4>
+        <%= link_to 'レジに進む', new_order_path, class: "btn btn-warning d-block mt-3" %>
+      </div>
+
+    </div>
+
+  </div>
+</div>
 
 

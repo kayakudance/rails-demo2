@@ -5,6 +5,7 @@ class CartsController < ApplicationController
 
   def index
     @cart_items = @user_cart.cart_items
+    @cart_total = @user_cart.calculate_total_price
   end
 
   def update

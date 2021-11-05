@@ -41,7 +41,7 @@
     <div class="col-md-3">
       <div class="border p-3 bg-light">
         <h4>商品合計</h4>
-        <h4>¥<%= current_user.cart.calculate_total_price %></h4>
+        <h4>¥<%= @cart_total.to_s(:delimited) %></h4>
         <%= link_to 'レジに進む', new_order_path, class: "btn btn-warning d-block mt-3" %>
       </div>
 

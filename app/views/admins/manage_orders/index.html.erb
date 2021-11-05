@@ -1,12 +1,34 @@
 <h1>注文管理</h1>
-<hr>
-<h2>注文一覧</h2>
-<% @orders.each do |order| %>
-  <h4 style="display: inline">
-    <%=
-      link_to "#{order.order_status} #{order.user.name}",
-                edit_admins_manage_order_path(order)
-    %>
-  </h4>
+<div class="container bg-light pt-3">
+  <h2>注文一覧</h2>
   <hr>
-<% end %>
+  <div class="table-responsive">
+    <table class="table w-auto">
+      <thead class="table-light text-center">
+      <tr>
+        <th scope="col">注文id</th>
+        <th scope="col">編集</th>
+        <th scope="col">ステータス</th>
+        <th scope="col">注文日時</th>
+        <th scope="col">注文者名</th>
+        <th scope="col">請求金額</th>
+
+      </tr>
+      </thead>
+      <tbody>
+      <% @orders.each do |order| %>
+        <tr>
+          <th scope="row"><%= order.id %></th>
+          <td><%= link_to '編集', edit_admins_manage_order_path(order), class: "btn btn-primary"%></td>
+          <td><%= order.order_status %></td>
+          <td><%= order.created_at.to_s(:datetime_jp) %></td>
+          <td><%= order.user.name %></td>
+          <td>¥ <%= order.bill&.to_s(:delimited) %></td>
+        </tr>
+      <% end %>
+
+      </tbody>
+    </table>
+  </div>
+  
+</div>

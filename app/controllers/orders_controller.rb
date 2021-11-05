@@ -1,10 +1,18 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_user_cart, only: [:new, :create]
+  before_action :set_user_cart, only: [:new, :confirm, :create]
   before_action :set_user_order, only: [:new]
 
   def new
-    @bill = @user_cart.calculate_total_price
+    @bill = @user_cart.calculate_total_price.to_s(:delimited)
+  end
+
+  def confirm
+    @order = current_user.orders.new(order_params)
+    @bill = @user_cart.calculate_total_price.to_s(:delimited)
+    if @order.invalid?
+      render action: :new
+    end
   end
 
   def create
@@ -21,7 +29,14 @@ class OrdersController < ApplicationController
 
     @user_cart.destroy
 
-    redirect_to completes_order_path
+    redirect_to orders_complete_path
+  end
+
+  def edit
+
+  end
+
+  def complete
   end
 
   private
@@ -34,7 +49,7 @@ class OrdersController < ApplicationController
   end
 
   def order_params
-    params.require(:order).permit(:zip, :address, :tel, :paymethod, :bill)
+    params.require(:order).permit(:address_name, :zip, :address, :tel, :paymethod, :bill)
   end
 
 end

@@ -11,3 +11,9 @@ ja:
       product:
         name: 商品名
         price: 価格
+      order:
+        address_name: お届け先氏名・組織名
+        address: お届け先住所
+        zip: 郵便番号
+        tel: ご連絡先
+

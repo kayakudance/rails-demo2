@@ -1,24 +1,68 @@
-<h1>注文設定</h1>
-<hr>
-<%= form_with model: @order, local: true do |f| %>
-  <%= f.label :zip, '郵便番号' %>
-  <%= f.text_field :zip %>
-  <br>
-  <br>
-  <%= f.label :address, '住所' %>
-  <%= f.text_field :address, style: 'width:300px' %>
-  <br>
-  <br>
-  <%= f.label :tel, '電話番号' %>
-  <%= f.text_field :tel %>
-  <hr>
-  <h2>支払い方法</h2>
-  <%= f.select :paymethod, ['代引','銀行振込','クレジット'] %>
-  <hr>
-  <h2>ご請求金額</h2>
-  <h3><%= @bill %>円</h3>
-  <%= f.hidden_field :bill, value: @bill %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-8">
+      <h1>注文設定</h1>
+      <hr class="mt-3">
+      <%= form_with model: @order, url: orders_confirm_path, local: true do |f| %>
+        <div class="row">
+          <div class="col-3">
+            <h5 class="mb-4">１ お届け先</h5>
+          </div>
+          <div class="col-9">
 
-  <%= f.submit '注文確定' %>
+            <div class="row col-8 ms-0 mb-2">
+              <h6 class="ps-0"><%= f.label :address_name, 'お届け先氏名・組織名', class: 'form-label' %></h6>
+              <%= f.text_field :address_name, class: 'form-control w-50' %>
+            </div>
+            <% if @order.errors.messages[:address_name].present? %>
+              <strong class="validation-error">※ <%= @order.errors.full_messages_for(:address_name).first %></strong>
+            <% end %>
 
-<% end %>
+            <div class="row col-8 ms-0 mb-2">
+              <h6 class="ps-0"><%= f.label :zip, '郵便番号', class: 'form-label' %></h6>
+              <%= f.text_field :zip, class: 'form-control w-50' %>
+            </div>
+            <% if @order.errors.messages[:zip].present? %>
+              <strong class="validation-error">※ <%= @order.errors.full_messages_for(:zip).first %></strong>
+            <% end %>
+
+            <div class="row col-8 ms-0 mb-2">
+              <h6 class="ps-0"><%= f.label :address, 'お届け先住所', class: 'form-label' %></h6>
+              <%= f.text_field :address, class: 'form-control' %>
+            </div>
+            <% if @order.errors.messages[:address].present? %>
+              <strong class="validation-error">※ <%= @order.errors.full_messages_for(:address).first %></strong>
+            <% end %>
+
+            <div class="row col-8 ms-0 mb-2">
+              <h6 class="ps-0"><%= f.label :tel, 'ご連絡先', class: 'form-label' %></h6>
+              <%= f.text_field :tel, class: 'form-control w-50' %>
+            </div>
+            <% if @order.errors.messages[:tel].present? %>
+              <strong class="validation-error">※ <%= @order.errors.full_messages_for(:tel).first %></strong>
+            <% end %>
+
+          </div>
+          <hr class="mt-3">
+
+          <div class="col-3">
+            <h5 class="mb-4">２ お支払い方法</h5>
+          </div>
+          <div class="col-9">
+            <%= f.select :paymethod, ['代引','銀行振込','クレジット'],{},{class: "form-select w-auto"} %>
+          </div>
+          <hr class="mt-3">
+
+          <div class="row justify-content-center">
+            <%= f.hidden_field :bill, value: @bill %>
+            <%= f.submit '注文確認画面へ', class: "btn btn-warning d-block mt-3 w-50" %>
+          </div>
+
+        </div>
+
+
+        <% end %>
+
+    </div>
+  </div>
+</div>

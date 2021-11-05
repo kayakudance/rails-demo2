@@ -1,6 +1,8 @@
 class Admins::ManageOrdersController < ApplicationController
+  layout 'admins'
+
   def index
-    @orders = Order.all
+    @orders = Order.order('created_at desc')
   end
 
   def edit

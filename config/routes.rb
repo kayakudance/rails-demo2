@@ -37,11 +37,8 @@ Rails.application.routes.draw do
 
   #  レジ
   resources :orders, only: [:new, :create]
-
-  #　complete
-  namespace :completes do
-    get 'order'
-  end
+  post 'orders/confirm', to: 'orders#confirm', as: 'orders_confirm'
+  get 'orders/complete', to: 'orders#complete', as: 'orders_complete'
 
   # 注文履歴
   resources :histories, only: [:index, :show]

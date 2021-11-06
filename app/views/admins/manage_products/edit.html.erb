@@ -1,6 +1,14 @@
 <h1>商品編集</h1>
 <hr>
 <%= form_with model: @product, url: admins_manage_product_path ,method: :put do |f| %>
+
+    <div class="form-check">
+      <h4 class="ms-3 mb-3">
+        <label class="form-check-label" for="flexCheckDefault">おすすめ
+        </label>
+        <%= f.check_box :recommended_flag, {class: "form-check-input", id: "flexCheckDefault"} %>
+      </h4>
+  </div>
   <div class="row col-8 ms-0 mb-2">
     <h2 class="ps-0"><%= f.label :name, '商品名', class: 'form-label' %></h2>
     <%= f.text_field :name, class: 'form-control' %>

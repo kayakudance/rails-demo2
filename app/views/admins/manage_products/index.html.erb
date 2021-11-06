@@ -8,6 +8,7 @@
       <th scope="col">id</th>
       <th scope="col">編集</th>
       <th scope="col">削除</th>
+      <th scope="col">おすすめ</th>
       <th scope="col">商品名</th>
     </tr>
     </thead>
@@ -17,6 +18,7 @@
       <th scope="row"><%= product.id %></th>
       <td><%= link_to '編集', edit_admins_manage_product_path(product), class: "btn btn-primary"%></td>
       <td><%= link_to '削除', admins_manage_product_path(product), class: "btn btn-danger", method: :delete %></td>
+      <td class="text-center"><%= product.recommended_flag_to_mark.html_safe %></td>
       <td><%= product.name %></td>
     </tr>
     <% end %>

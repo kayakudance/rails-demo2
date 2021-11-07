@@ -7,13 +7,5 @@ class Product < ApplicationRecord
     validates :description, length: { maximum: 512 }
     validates :price, presence: true
 
-    def recommended_flag_to_mark
-        if recommended_flag
-            "&#128310;"
-        else
-            ""
-        end
-    end
-
 end
 

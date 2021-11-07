@@ -1,11 +1,11 @@
 <h1>注文管理</h1>
-<hr>
-<h4>注文ステータス</h4>
-<%= form_with model: @order, url: admins_manage_order_path ,method: :put do |f| %>
-  <%= f.select :order_status, @order.status_options %>
-  <%= f.submit '更新' %>
-<% end %>
-<hr>
+<div class="container bg-light pt-3">
+  <h4>注文ステータス</h4>
+  <%= form_with model: @order, url: admins_manage_order_path , method: :put do |f| %>
+    <%= f.select :order_status, @order.status_options, class: "form-select w-auto" %>
+    <%= f.submit '更新', class: "btn btn-success ms-3" %>
+  <% end %>
+  <hr>
   <h4>注文者情報</h4>
   <p><%= @order.user.name %></p>
   <p>〒<%= @order.zip %></p>
@@ -17,12 +17,16 @@
   <p><%= @order.bill %>円</p>
   <hr>
   <h4>注文商品</h4>
-<% @order.order_items.each do |item| %>
-  <p>注文時商品名: <%= item.product_name %></p>
-  <p>注文時単価: <%= item.ordered_price %></p>
-  <p>注文個数: <%= item.quantity %></p>
-  <p>注文小計: <%= item.calculate_total %>円</p>
-<% end %>
+  <% @order.order_items.each do |item| %>
+    <p>注文時商品名: <%= item.product_name %></p>
+    <p>注文時単価: <%= item.ordered_price %></p>
+    <p>注文個数: <%= item.quantity %></p>
+    <p>注文小計: <%= item.calculate_total %>円</p>
+    <hr>
+  <% end %>
+
+</div>
+
 
 
 

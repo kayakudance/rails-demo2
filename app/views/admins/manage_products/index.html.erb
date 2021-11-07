@@ -18,11 +18,12 @@
       <th scope="row"><%= product.id %></th>
       <td><%= link_to '編集', edit_admins_manage_product_path(product), class: "btn btn-primary"%></td>
       <td><%= link_to '削除', admins_manage_product_path(product), class: "btn btn-danger", method: :delete %></td>
-      <td class="text-center"><%= product.recommended_flag_to_mark.html_safe %></td>
+      <td class="text-center"><%= recommended_flag_to_mark(product) %></td>
       <td><%= product.name %></td>
     </tr>
     <% end %>
 
     </tbody>
   </table>
+  <%= paginate @products %>
 </div>

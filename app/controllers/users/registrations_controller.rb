@@ -9,10 +9,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+  def pre_signup
+
+  end
+
   # POST /resource
   # def create
   #   super
   # end
+
+
 
   # GET /resource/edit
   # def edit
@@ -38,6 +44,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   #   super
   # end
 
+
   protected
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -56,6 +63,6 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   # The path used after sign up for inactive accounts.
   def after_inactive_sign_up_path_for(resource)
-    aftersignupmail_path
+    pre_signup_path
   end
 end

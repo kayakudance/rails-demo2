@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admins do
-    root 'admin#index'
+    root 'manage_products#index'
     resources :manage_products
     resources :manage_orders, only:[:index, :edit, :update]
   end
@@ -22,6 +22,10 @@ Rails.application.routes.draw do
     confirmations: 'users/confirmations',
     unlocks: 'users/unlocks'
   }
+
+  devise_scope :user do
+    get 'pre_signup', to: 'users/registrations#pre_signup'
+  end
 
   resources :products, only:[:index, :show]
 

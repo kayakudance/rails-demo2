@@ -67,3 +67,9 @@ gem 'rails-erd'
 
 # 環境変数
 gem 'dotenv-rails'
+
+# ページング
+gem 'kaminari'
+
+# 1 + n
+gem 'bullet'

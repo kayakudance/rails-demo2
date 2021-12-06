@@ -1,16 +1,17 @@
 # initialize
 # users = User.all
 
-# # User ---------------------------------
+# User ---------------------------------
 1.times do |i|
-  User.create(
+  User.create!(
     name: "東京太郎#{i +1}",
     email: "taro#{i + 1}@gmail.com",
-    password: "00000#{i + 1}"
+    password: "00000#{i + 1}",
+    password_confirmation: "00000#{i + 1}"
   )
 end
 #
-# # Admin ---------------------------------
+# Admin ---------------------------------
 1.times do |i|
   Admin.create(
     name: "東京太郎#{i +1}",
@@ -20,14 +21,14 @@ end
 end
 
 # Products ---------------------------------
-# 26.times do |i|
-#   product = Product.create(
-#     name: "ダミー商品#{i + 1}",
-#     description: "この商品はダミー商品#{i + 1}です。",
-#     price:  100 + 100 * i
-#   )
-#   product.image.attach(io: File.open('./public/images/dummy.jpeg'), filename: 'dummy.pdf')
-# end
+26.times do |i|
+  product = Product.create(
+    name: "ダミー商品#{i + 1}",
+    description: "この商品はダミー商品#{i + 1}です。",
+    price:  100 + 100 * i
+  )
+  product.image.attach(io: File.open('./public/images/dummy.jpeg'), filename: 'dummy.pdf')
+end
 
 # Cart ---------------------------------
 # users.each do |user|

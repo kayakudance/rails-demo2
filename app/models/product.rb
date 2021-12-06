@@ -3,9 +3,9 @@ class Product < ApplicationRecord
     has_many :carts, through: :cart_items
     has_one_attached :image
 
-    validates :name, presence: true
-    validates :description, length: { maximum: 512 }
-    validates :price, presence: true
+    validates :name, length: {maximum: 50}, presence: true
+    validates :description, length: { maximum: 1000 }
+    validates :price, numericality: {greater_than_or_equal_to: 0}
 
 end
 

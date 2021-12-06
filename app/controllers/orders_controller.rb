@@ -4,12 +4,11 @@ class OrdersController < ApplicationController
   before_action :set_user_order, only: [:new]
 
   def new
-    @bill = @user_cart.calculate_total_price.to_s(:delimited)
+    @bill = @user_cart.calculate_total_price
   end
 
   def confirm
     @order = current_user.orders.new(order_params)
-    @bill = @user_cart.calculate_total_price.to_s(:delimited)
     if @order.invalid?
       render action: :new
     end
@@ -42,7 +41,7 @@ class OrdersController < ApplicationController
   private
   def set_user_cart
     @user_cart = current_user.cart
-    end
+  end
 
   def set_user_order
     @order = current_user.orders.build

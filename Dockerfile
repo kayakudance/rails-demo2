@@ -3,9 +3,9 @@ FROM ruby:2.6
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
     && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list
 RUN apt-get update -qq && apt-get install -y nodejs yarn graphviz
-WORKDIR /rails-ec2
-COPY Gemfile /rails-ec2/Gemfile
-COPY Gemfile.lock /rails-ec2/Gemfile.lock
+WORKDIR /rails-demo2
+COPY Gemfile /rails-demo2/Gemfile
+COPY Gemfile.lock /rails-demo2/Gemfile.lock
 RUN bundle install
 
 # Add a script to be executed every time the container starts.

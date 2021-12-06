@@ -8,49 +8,55 @@
           <div class="col-3">
             <h5 class="mb-4">１ お届け先</h5>
           </div>
-          <div class="col-9">
 
-            <div class="row col-8 ms-0 mb-2">
+          <div class="col-9">
+            <div class="col-8 ms-0 mb-2">
               <h6 class="ps-0"><%= f.label :address_name, 'お届け先氏名・組織名', class: 'form-label' %></h6>
               <%= f.text_field :address_name, class: 'form-control w-50' %>
+              <% if @order.errors.messages[:address_name].present? %>
+                <strong class="text-danger">※ <%= @order.errors.full_messages_for(:address_name).first %></strong>
+              <% end %>
             </div>
-            <% if @order.errors.messages[:address_name].present? %>
-              <strong class="validation-error">※ <%= @order.errors.full_messages_for(:address_name).first %></strong>
-            <% end %>
 
-            <div class="row col-8 ms-0 mb-2">
+            <div class="col-8 ms-0 mb-2">
               <h6 class="ps-0"><%= f.label :zip, '郵便番号', class: 'form-label' %></h6>
               <%= f.text_field :zip, class: 'form-control w-50' %>
+              <% if @order.errors.messages[:zip].present? %>
+                <strong class="text-danger">※ <%= @order.errors.full_messages_for(:zip).first %></strong>
+              <% end %>
             </div>
-            <% if @order.errors.messages[:zip].present? %>
-              <strong class="validation-error">※ <%= @order.errors.full_messages_for(:zip).first %></strong>
-            <% end %>
 
-            <div class="row col-8 ms-0 mb-2">
+            <div class="col-8 ms-0 mb-2">
               <h6 class="ps-0"><%= f.label :address, 'お届け先住所', class: 'form-label' %></h6>
               <%= f.text_field :address, class: 'form-control' %>
+              <% if @order.errors.messages[:address].present? %>
+                <strong class="text-danger">※ <%= @order.errors.full_messages_for(:address).first %></strong>
+              <% end %>
             </div>
-            <% if @order.errors.messages[:address].present? %>
-              <strong class="validation-error">※ <%= @order.errors.full_messages_for(:address).first %></strong>
-            <% end %>
 
-            <div class="row col-8 ms-0 mb-2">
+            <div class="col-8 ms-0 mb-2">
               <h6 class="ps-0"><%= f.label :tel, 'ご連絡先', class: 'form-label' %></h6>
               <%= f.text_field :tel, class: 'form-control w-50' %>
+              <% if @order.errors.messages[:tel].present? %>
+                <strong class="text-danger">※ <%= @order.errors.full_messages_for(:tel).first %></strong>
+              <% end %>
             </div>
-            <% if @order.errors.messages[:tel].present? %>
-              <strong class="validation-error">※ <%= @order.errors.full_messages_for(:tel).first %></strong>
-            <% end %>
 
           </div>
-          <hr class="mt-3">
+        </div>
 
+        <div class="row mt-5">
           <div class="col-3">
             <h5 class="mb-4">２ お支払い方法</h5>
           </div>
+
           <div class="col-9">
-            <%= f.select :paymethod, ['代引','銀行振込','クレジット'],{},{class: "form-select w-auto"} %>
+            <div class="col-8 ms-0 mb-2">
+              <%= f.select :paymethod, ['代引','銀行振込','クレジット'],{},{class: "form-control w-auto"} %>
+            </div>
           </div>
+        </div>
+
           <hr class="mt-3">
 
           <div class="row justify-content-center">
@@ -61,7 +67,7 @@
         </div>
 
 
-        <% end %>
+      <% end %>
 
     </div>
   </div>

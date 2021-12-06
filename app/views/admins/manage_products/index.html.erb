@@ -14,12 +14,12 @@
     </thead>
     <tbody>
     <% @products.each do |product| %>
-    <tr>
-      <th scope="row"><%= product.id %></th>
+    <tr class="text-center">
+      <th scope="row" class="align-middle"><%= product.id %></th>
       <td><%= link_to '編集', edit_admins_manage_product_path(product), class: "btn btn-primary"%></td>
       <td><%= link_to '削除', admins_manage_product_path(product), class: "btn btn-danger", method: :delete %></td>
-      <td class="text-center"><%= recommended_flag_to_mark(product) %></td>
-      <td><%= product.name %></td>
+      <td class="align-middle"><%= recommended_flag_to_mark(product) %></td>
+      <td class="align-middle"><%= product.name %></td>
     </tr>
     <% end %>
 

@@ -2,26 +2,35 @@
 <hr>
 <%= form_with model: @product, url: admins_manage_products_path ,method: :post do |f| %>
 
+  <div class="custom-control custom-checkbox">
+    <h4 class="ms-3 mb-3">
+      <%= f.check_box :is_recommended, {class: "custom-control-input", id: "customCheck1"} %>
+      <label class="custom-control-label" for="customCheck1">おすすめ</label>
+    </h4>
+  </div>
+
   <div class="row col-8 ms-0 mb-2">
     <h2 class="ps-0"><%= f.label :name, '商品名', class: 'form-label' %></h2>
     <%= f.text_field :name, class: 'form-control' %>
+    <% if @product.errors.messages[:name].present? %>
+      <strong class="text-danger">※ <%= @product.errors.full_messages_for(:name).first %></strong>
+    <% end %>
   </div>
-  <% if @product.errors.messages[:name].present? %>
-    <strong class="validation-error">※ <%= @product.errors.full_messages_for(:name).first %></strong>
-  <% end %>
+
 
   <div class="row col-8 ms-0 mb-2">
     <h2 class="ps-0"><%= f.label :description, '商品説明', class: 'form-label' %></h2>
     <%= f.text_area :description, class: 'form-control', size: "20x5" %>
   </div>
 
-  <div class="row col-4 ms-0 mb-2">
+  <div class="row col-3 ms-0 mb-2">
     <h2 class="ps-0"><%= f.label :price, '価格', class: 'form-label' %></h2>
     <%= f.number_field :price, class: 'form-control' %>
+    <% if @product.errors.messages[:price].present? %>
+      <strong class="text-danger">※ <%= @product.errors.full_messages_for(:price).first %></strong>
+    <% end %>
   </div>
-  <% if @product.errors.messages[:price].present? %>
-    <strong class="validation-error">※ <%= @product.errors.full_messages_for(:price).first %></strong>
-  <% end %>
+
 
   <div class="row col-8 ms-0 mb-2">
     <h2 class="ps-0"><%= f.label :image, '画像', class: 'form-label' %></h2>

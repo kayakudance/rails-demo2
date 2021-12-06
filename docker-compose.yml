@@ -23,9 +23,7 @@ services:
     build: .
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
     volumes:
-      - .:/rails-ec2
-      # ↓gemファイルの永続化
-      # ↓gem environmentコマンドでinstration directoryのパスを指定する
+      - .:/rails-demo2
       - bundle:/Library/Ruby/Gems/2.6.0
     ports:
       - '3000:3000'
@@ -38,6 +36,5 @@ services:
     ports:
       - '1080:1080'
       - '1025:1025'
-# ↓gemファイルの永続化設定
 volumes:
   bundle:

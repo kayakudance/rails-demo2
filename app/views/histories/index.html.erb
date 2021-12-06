@@ -10,11 +10,11 @@
             <label>注文日</label>
             <p class="mb-0"><%= order.created_at.to_s(:custom_date) %></p>
           </div>
-          <div class="ms-4">
+          <div class="pl-4">
             <label>注文金額</label>
-            <p class="mb-0">¥<%= order.bill&.to_s(:delimited) %></p>
+            <p class="mb-0">¥<%= number_with_delimiter order.bill %></p>
           </div>
-          <div class="ms-4">
+          <div class="pl-4">
             <label>お届け先</label>
             <p class="mb-0"><%= order.address %></p>
           </div>
@@ -38,7 +38,7 @@
                 <div class="col-8">
                   <div class="d-flex flex-column h-100">
                     <h4><%= order_item.product_name %></h4>
-                    <div class="mb-auto">¥<%= order_item.ordered_price %></div>
+                    <div class="mb-auto">¥<%= number_with_delimiter order_item.ordered_price %></div>
                     <div class="mb-auto">数量: <%= order_item.quantity %></div>
                   </div>
                 </div>

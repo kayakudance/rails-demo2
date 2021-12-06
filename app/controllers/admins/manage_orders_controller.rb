@@ -2,23 +2,26 @@ class Admins::ManageOrdersController < ApplicationController
   layout 'admins'
 
   before_action :authenticate_admin!
+  before_action :set_order, only: %i[edit update]
 
   def index
-    @orders = Order.order('created_at desc').page(params[:page])
+    @orders = Order.includes(:user).order('created_at desc').page(params[:page])
   end
 
   def edit
-    @order = Order.find(params[:id])
-    @order_user = @order.user
+    @order_items = @order.order_items
   end
 
   def update
-    @order = Order.find(params[:id])
-    @order.update(order_params)
+    @order.update!(order_params)
     redirect_to admins_manage_orders_path
   end
 
   private
+  def set_order
+    @order = Order.find(params[:id])
+  end
+
   def order_params
     params.require(:order).permit(:order_status)
   end

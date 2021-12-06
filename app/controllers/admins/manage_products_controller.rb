@@ -1,45 +1,49 @@
 class Admins::ManageProductsController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_product, only: %i[edit update destroy]
 
   layout 'admins'
+
   def index
     @products = Product.page(params[:page])
   end
 
   def new
-    @product = Product.new
+    @product = Product.news
   end
 
   def create
     @product = Product.new(product_params)
     if @product.save
-      flash[:success] = "商品を１件登録しました。"
-      redirect_to admins_manage_products_path
+      redirect_to admins_manage_products_path, notice: "商品を１件登録しました"
     else
-      render action: :new
+      render :new
     end
   end
 
   def edit
-    @product = Product.find(params[:id])
   end
 
   def update
-    @product = Product.find(params[:id])
-    @product.update(product_params)
-    flash[:success] = "商品を更新しました。"
-    redirect_to admins_manage_products_path
+    if @product.update(product_params)
+      redirect_to admins_manage_products_path, notice: "商品情報を更新しました"
+    else
+      render :edit
+    end
   end
 
   def destroy
-    product = Product.find(params[:id])
-    product.destroy
-    flash[:success] = "商品を１件削除しました。"
-    redirect_to admins_manage_products_path
+    @product.destroy!
+    redirect_to admins_manage_products_path, notice: "商品を１件削除しました"
   end
 
   private
+
+  def set_product
+    @product = Product.find(params[:id])
+  end
+
   def product_params
-    params.require(:product).permit(:name, :description, :price, :image, :recommended_flag)
+    params.require(:product).permit(:name, :description, :price, :image, :is_recommended)
   end
 end

@@ -23,7 +23,7 @@
           <td><%= order.order_status %></td>
           <td><%= order.created_at.to_s(:datetime_jp) %></td>
           <td><%= order.user.name %></td>
-          <td>¥ <%= order.bill&.to_s(:delimited) %></td>
+          <td>¥ <%= number_with_delimiter order.bill %></td>
         </tr>
       <% end %>
 

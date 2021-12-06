@@ -8,8 +8,8 @@ default: &default
 
 development:
   <<: *default
-  database: devise-2_development
+  database: rails-demo2_development
 
 test:
   <<: *default
-  database: devise-2_test
+  database: rails-demo2_test

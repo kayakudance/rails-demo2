@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-9">
+
       <h1>おすすめ商品</h1>
 
       <div class="row">
@@ -11,7 +12,7 @@
               <div class="col-12 ">
                 <p class="mt-2 text-dark">
                   <%= product.name %><br>
-                  <label>￥<%= product.price.to_s(:delimited) %></label>
+                  <label>￥<%= number_with_delimiter product.price %></label>
                 </p>
               </div>
             <% end %>
@@ -77,11 +78,14 @@
           </div>
         </div>
       </div>
+
+      <div class="row mx-auto mt-3 justify-content-center">
+        <%= link_to '商品一覧へ', products_path, class: 'btn btn-lg btn-success w-75' %>
+      </div>
+
     </div>
 
-    <div class="d-grid gap-2 col-sm-4 mx-auto mt-3">
-      <%= link_to '商品一覧へ', products_path, class: 'btn btn-lg btn-success' %>
-    </div>
+
 
   </div>
 </div>

@@ -1,10 +1,9 @@
 Rails.application.routes.draw do
+  root 'home#index'
+
   devise_for :admins, controllers: {
-    registrations: 'admins/auth/registrations',
-    sessions: 'admins/auth/sessions',
-    passwords: 'admins/auth/passwords',
-    confirmations: 'admins/auth/confirmations',
-    unlocks: 'admins/auth/unlocks'
+    registrations: 'admins/registrations',
+    sessions: 'admins/sessions'
   }
 
   namespace :admins do
@@ -13,25 +12,21 @@ Rails.application.routes.draw do
     resources :manage_orders, only:[:index, :edit, :update]
   end
 
-  root 'home#index'
 
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
-    passwords: 'users/passwords',
     confirmations: 'users/confirmations',
-    unlocks: 'users/unlocks'
   }
 
   devise_scope :user do
-    get 'pre_signup', to: 'users/registrations#pre_signup'
+    get 'after_signup_confirmation', to: 'users/registrations#after_signup_confirmation'
   end
 
   resources :products, only:[:index, :show]
 
   scope :aftermails do
     get 'aftersignupmail', to:'aftermails#signup'
-    get 'aftersignin', to:'aftermails#signin'
   end
 
   get 'cart', to: 'carts#index'

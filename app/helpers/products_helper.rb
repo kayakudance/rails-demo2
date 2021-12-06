@@ -1,7 +1,7 @@
 module ProductsHelper
 
   def recommended_flag_to_mark(product)
-    if product.recommended_flag
+    if product.is_recommended
       "●"
     else
       ""

@@ -2,22 +2,22 @@
 # users = User.all
 
 # # User ---------------------------------
-# 2.times do |i|
-#   User.create(
-#     name: "東京太郎#{i +1}",
-#     email: "yuta#{i + 1}@gmail.com",
-#     password: "00000#{i + 1}"
-#   )
-# end
+1.times do |i|
+  User.create(
+    name: "東京太郎#{i +1}",
+    email: "taro#{i + 1}@gmail.com",
+    password: "00000#{i + 1}"
+  )
+end
 #
 # # Admin ---------------------------------
-# 2.times do |i|
-#   Admin.create(
-#     name: "東京太郎#{i +1}",
-#     email: "yuta#{i + 1}@gmail.com",
-#     password: "00000#{i + 1}"
-#   )
-# end
+1.times do |i|
+  Admin.create(
+    name: "東京太郎#{i +1}",
+    email: "taro#{i + 1}@gmail.com",
+    password: "00000#{i + 1}"
+  )
+end
 
 # Products ---------------------------------
 # 26.times do |i|

@@ -10,11 +10,12 @@
     password_confirmation: "00000#{i + 1}"
   )
 end
+
 #
 # Admin ---------------------------------
 1.times do |i|
   Admin.create(
-    name: "東京太郎#{i +1}",
+    name: "東京太郎#{i + 1}",
     email: "taro#{i + 1}@gmail.com",
     password: "00000#{i + 1}"
   )

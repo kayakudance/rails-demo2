@@ -9,7 +9,7 @@ class Admins::ManageProductsController < ApplicationController
   end
 
   def new
-    @product = Product.news
+    @product = Product.new
   end
 
   def create

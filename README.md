@@ -1,24 +1,29 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+現在rails学習のため開発中のECサイトです
 
-Things you may want to cover:
+## UI
 
-* Ruby version
+* ユーザーは会員登録ができる
+* 会員登録をするとカートを使用することができる
+* 個数を選択した商品をカートに入れ、注文をすることができる
+* 注文した商品の履歴を確認できる
 
-* System dependencies
+* 管理者は商品のCRUDができる
+* 管理者は注文のステータスを変更できる
 
-* Configuration
+## 機能面で試していること
+* deviseを用いたログイン機能
+* バリデーションの設定
+* ActiveStorageの使用
+* i18nを用いた日本語化
+* db設計
+* n + 1 問題への対応
+* seedの活用
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 開発課題
+* テストコードを書く
+* セッションを使用したカートシステム
+* ajaxの使用
+* dockerでメールサーバーを立ててのdeviseメール認証機能
